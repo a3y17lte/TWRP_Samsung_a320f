@@ -1,9 +1,9 @@
 
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := universal7580
+TARGET_BOOTLOADER_BOARD_NAME := exynos7870
 
 # Platform
-TARGET_BOARD_PLATFORM := exynos7580
+TARGET_BOARD_PLATFORM := exynos7870
 
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
@@ -11,24 +11,17 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60 -DQCOM_HARDWARE
 
 # Architecture
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := generic
-TARGET_CPU_SMP := true
-
-TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
-TARGET_2ND_CPU_ABI := armeabi-v7a
-TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := generic
-#TARGET_2ND_CPU_VARIANT := cortex-a53
+TARGET_CPU_CORTEX_A53 := true
 
 BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE :=  0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/samsung/a3xelte/dtb
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/samsung/a3y17lte/dtb
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x360000000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x360000000
@@ -36,23 +29,28 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x30000000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x130000000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-TARGET_PREBUILT_KERNEL := device/samsung/a3xelte/kernel
+TARGET_PREBUILT_KERNEL := device/samsung/a3y17lte/kernel
 
 
 # Use this flag if the board has a ext4 partition larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-
-# TWRP specific build flags
-TW_THEME := portrait_hdpi
-RECOVERY_SDCARD_ON_DATA := true
+ifeq ($(RECOVERY_VARIANT),twrp)
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/twrp.fstab
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-TW_BRIGHTNESS_PATH := "/sys/devices/14800000.dsim/backlight/panel/brightness"
+TW_THEME := portrait_hdpi
+TARGET_RECOVERY_PIXEL_FORMAT := "ABGR_8888"
+TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
+TW_MAX_BRIGHTNESS := 255
 TW_NO_REBOOT_BOOTLOADER := true
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_NTFS_3G := true
 TW_HAS_DOWNLOAD_MODE := true
+TW_NO_EXFAT_FUSE := true
 TW_EXCLUDE_SUPERSU := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
+endif
 
 #speed up wipe
 BOARD_SUPPRESS_SECURE_ERASE := true
