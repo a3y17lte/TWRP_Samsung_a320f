@@ -2,5 +2,5 @@
 TWRP device tree for Samsung Galaxy A3 2017
 
 **Credit :**
-@McFy
+@McFy49
 @ashyx
