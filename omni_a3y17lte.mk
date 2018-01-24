@@ -8,8 +8,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, vendor/omni/config/common.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := a3xelte
-PRODUCT_NAME := omni_a3xelte
+PRODUCT_NAME := lineage_a3y17lte
+PRODUCT_DEVICE := a3y17lte
 PRODUCT_BRAND := samsung
-PRODUCT_MODEL := SM-A310F
+PRODUCT_MODEL := A320FL
 PRODUCT_MANUFACTURER := samsung
