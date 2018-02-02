@@ -84,3 +84,6 @@ TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_j7xelte
 TARGET_RECOVERY_DEVICE_MODULES := libinit_j7xelte
 TARGET_LIBINIT_DEFINES_FILE := device/samsung/j7xelte/init/init_j7xelte.cpp
+
+clone omni/bootable_recovery repo to bootable/recovery-twrp
+recovery_variant := twrp
