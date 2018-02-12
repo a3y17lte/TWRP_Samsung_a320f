@@ -43,15 +43,15 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x2CF3FB000 # 0x2CF400000 - 20480 (footer)
 BOARD_CACHEIMAGE_PARTITION_SIZE    := 0x00C800000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-TARGET_PREBUILT_KERNEL := device/samsung/j7xelte/Image
-TARGET_PREBUILT_DTB := device/samsung/j7xelte/dtb.img
+TARGET_PREBUILT_KERNEL := device/samsung/a3y17lte/Image
+TARGET_PREBUILT_DTB := device/samsung/a3y17lte/dtb.img
 
 # Use this flag if the board has a ext4 partition larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_SUPPRESS_SECURE_ERASE := true
-BOARD_CUSTOM_BOOTIMG_MK :=  device/samsung/j7xelte/bootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK :=  device/samsung/a3y17lte/bootimg.mk
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
@@ -79,11 +79,6 @@ TW_INCLUDE_CRYPTO := true
 #TWRP_INCLUDE_LOGCAT := true
 #TARGET_USES_LOGD := true
 
-# Init properties from bootloader version, ex. model info
-TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_j7xelte
-TARGET_RECOVERY_DEVICE_MODULES := libinit_j7xelte
-TARGET_LIBINIT_DEFINES_FILE := device/samsung/j7xelte/init/init_j7xelte.cpp
 
 #clone omni/bootable_recovery repo to bootable/recovery-twrp
 recovery_variant := twrp
