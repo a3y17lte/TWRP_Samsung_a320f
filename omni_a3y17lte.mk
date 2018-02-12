@@ -12,7 +12,7 @@ PRODUCT_PACKAGES += \
 	charger
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := j7xelte
-PRODUCT_NAME := omni_j7xelte
+PRODUCT_DEVICE := a3y17lte
+PRODUCT_NAME := omni_a3y17lte
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
